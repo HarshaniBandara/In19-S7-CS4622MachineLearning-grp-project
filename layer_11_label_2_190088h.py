@@ -328,28 +328,28 @@ write_predictions_to_csv(y_pred_test,"lgistic regression label 2 layer 11 after 
 y_pred_test=pred['SVM']
 write_predictions_to_csv(y_pred_test,"SVC label 2 layer 11 after k best.csv")
 
-# correlated_features = set()
-# correlation_matrix = scaled_train_x_label_2.corr()
-# # print(correlation_matrix)
-# for i in range(len(correlation_matrix .columns)):
-#     for j in range(i):
-#         if abs(correlation_matrix.iloc[i, j]) > 0.5:
-#             colname = correlation_matrix.columns[i]
-#             correlated_features.add(colname)
-# # print(correlated_features)
-# scaled_train_x_label_2.drop(labels=correlated_features, axis=1, inplace=True)
-# scaled_valid_x_label_2.drop(labels=correlated_features, axis=1, inplace=True)
-# scaled_test_x_label_2.drop(labels=correlated_features, axis=1, inplace=True)
-# print(scaled_train_x_label_2.shape,scaled_valid_x_label_2.shape)
-# # knn(scaled_train_x_label_2,train_y_label_2,scaled_valid_x_label_2,valid_y_label_2)
-# train_and_evaluate_models(scaled_train_x_label_2,train_y_label_2,scaled_valid_x_label_2,valid_y_label_2)
-# after removing corelated features
-# {'Random Forest': 0.7472826086956522,
-#  'SVM': 0.7703804347826086,
-#  'Logistic Regression': 0.7635869565217391,
-#  'K-Nearest Neighbors': 0.8315217391304348,
-#  'Naive Bayes': 0.3736413043478261,
-#  'Decision Tree': 0.3845108695652174}
+correlated_features = set()
+correlation_matrix = scaled_train_x_label_2.corr()
+# print(correlation_matrix)
+for i in range(len(correlation_matrix .columns)):
+    for j in range(i):
+        if abs(correlation_matrix.iloc[i, j]) > 0.5:
+            colname = correlation_matrix.columns[i]
+            correlated_features.add(colname)
+# print(correlated_features)
+scaled_train_x_label_2.drop(labels=correlated_features, axis=1, inplace=True)
+scaled_valid_x_label_2.drop(labels=correlated_features, axis=1, inplace=True)
+scaled_test_x_label_2.drop(labels=correlated_features, axis=1, inplace=True)
+print(scaled_train_x_label_2.shape,scaled_valid_x_label_2.shape)
+# knn(scaled_train_x_label_2,train_y_label_2,scaled_valid_x_label_2,valid_y_label_2)
+train_and_evaluate_models(scaled_train_x_label_2,train_y_label_2,scaled_valid_x_label_2,valid_y_label_2)
+after removing corelated features
+{'Random Forest': 0.7472826086956522,
+ 'SVM': 0.7703804347826086,
+ 'Logistic Regression': 0.7635869565217391,
+ 'K-Nearest Neighbors': 0.8315217391304348,
+ 'Naive Bayes': 0.3736413043478261,
+ 'Decision Tree': 0.3845108695652174}
 
 # pca approch_
 from sklearn.decomposition import PCA
